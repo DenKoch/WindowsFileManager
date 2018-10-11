@@ -12,7 +12,7 @@ namespace WindowsFileManager {
         private string _type;
         private long _size;
 
-        public File(string fullPath, string parent) : base(fullPath, parent) {
+        public File(string fullPath) : base(fullPath) {
             FileInfo fi = new FileInfo(fullPath);
             _name = Path.GetFileNameWithoutExtension(fullPath);
             _size = fi.Length;

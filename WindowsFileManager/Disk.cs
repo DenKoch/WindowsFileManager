@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFileManager {
     public class Disk : Container {
-        public Disk(string fullPath, string parent) : base(fullPath, parent) {
+        public Disk(string fullPath) : base(fullPath) {
 
         }
 

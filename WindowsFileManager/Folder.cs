@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace WindowsFileManager {
     public class Folder : Container {
         private string _name;
-        public Folder(string fullPath, string parent) : base(fullPath, parent) {
+        public Folder(string fullPath) : base(fullPath) {
             DirectoryInfo di = new DirectoryInfo(fullPath);
             _name = di.Name;
         }

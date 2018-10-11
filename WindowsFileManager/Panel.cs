@@ -23,17 +23,17 @@ namespace WindowsFileManager {
             string[] dirs = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
             foreach (string dir in dirs) {
-                Folder newDir = new Folder(dir, path);
+                Folder newDir = new Folder(dir);
                 newDir.Show(lv);
             }
             foreach (string file in files) {
-                File newFile = new File(file, path);
+                File newFile = new File(file);
                 newFile.Show(lv);
             }
         }
 
         public void LoadDrives(ListView lv) {
-            MyComputer myComp = new MyComputer("", null);
+            MyComputer myComp = new MyComputer("");
             FileSystemObject[] disks = myComp.GetChildren();
             foreach (FileSystemObject d in disks) {
                 try {

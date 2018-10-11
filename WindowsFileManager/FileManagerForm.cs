@@ -22,16 +22,12 @@ namespace WindowsFileManager {
             string path = null;
             if (LListView.SelectedItems.Count == 1) {
                 if (LListView.SelectedItems[0].Text == "...") {
-                    path = LPanel.currentPath.Remove(LPanel.currentPath.LastIndexOf(@"\") + 1, LPanel.currentPath.Length - LPanel.currentPath.LastIndexOf(@"\") - 1);
-                    if (LPanel.currentPath == @"C:\" || LPanel.currentPath == @"F:\") {
-                        path = "";
-                    }
-                } else if (LPanel.currentPath == "") {
-                    path = LListView.SelectedItems[0].Text;
+                    path = LPanel.currentPath.Remove(LPanel.currentPath.LastIndexOf(@"\"), 1);
+                    path = path.Remove(path.LastIndexOf(@"\") + 1, path.Length - path.LastIndexOf(@"\") - 1);
                 } else {
-                    path = LPanel.currentPath + @"\" + LListView.SelectedItems[0].Text;
-                    if (LPanel.currentPath == @"C:\" || LPanel.currentPath == @"F:\") {
-                        path = LPanel.currentPath + LListView.SelectedItems[0].Text;
+                    path = LPanel.currentPath + LListView.SelectedItems[0].Text;
+                    if (LPanel.currentPath != "") {
+                        path += @"\";
                     }
                 }
             }
