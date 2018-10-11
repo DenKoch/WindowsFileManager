@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WindowsFileManager.FileManagerForm" Collapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQIAAIACAAQAEAAACAAAAWIAAgAAQACAAAAAEAYAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.FileSystemObject">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAIAAAABAAAAAAAIQAQAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>FileSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.File">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="WindowsFileManager.FileSystemObject" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.209" />
+        <Point X="4.25" Y="4.562" />
+        <Point X="5.25" Y="4.562" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAIAAAAQAAAAAAAAAAQAAAAAAAAAEAAIAAAA=</HashCode>
+      <FileName>File.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.Folder">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Folder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.MyComputer">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAA=</HashCode>
+      <FileName>MyComputer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.Program" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.Container">
+    <Position X="1.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAAAAAAAAAAAAAQAAAAAAAEAECAAAAAA=</HashCode>
+      <FileName>Container.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.Disk">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Disk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFileManager.FileManagerInterface" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileManagerInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
