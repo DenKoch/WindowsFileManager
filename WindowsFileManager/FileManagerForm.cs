@@ -13,35 +13,27 @@ namespace WindowsFileManager {
         }
 
         private void Form_Load(object sender, EventArgs e) {
-
-            LPanel.ShowItems(LListView, "");
-            RPanel.ShowItems(RListView, "");
+            LPanel.ShowItems(LListView, "", LPathBox);
+            RPanel.ShowItems(RListView, "", RPathBox);
         }
 
         private void LListView_DoubleClick(object sender, EventArgs e) {
-            string path = null;
-            if (LListView.SelectedItems.Count == 1) {
-                if (LListView.SelectedItems[0].Text == "...") {
-                    path = LPanel.currentPath.Remove(LPanel.currentPath.LastIndexOf(@"\"), 1);
-                    path = path.Remove(path.LastIndexOf(@"\") + 1, path.Length - path.LastIndexOf(@"\") - 1);
-                } else {
-                    path = LPanel.currentPath + LListView.SelectedItems[0].Text;
-                    if (LPanel.currentPath != "") {
-                        path += @"\";
-                    }
-                }
-            }
-            MessageBox.Show(path);
+            Interface.Open(LListView, LPanel.currentPath, LPanel, LPathBox, false);
+        }
+        private void RListView_DoubleClick(object sender, EventArgs e) {
+            Interface.Open(RListView, RPanel.currentPath, RPanel, RPathBox, false);
+        }
 
-            try {
-                if (Directory.Exists(path) || path == "") {
-                    LPanel.GoToFolder(LListView, path);
-                } else {
-                    MessageBox.Show("папка не существует");
-                }
-            } catch (Exception ex) {
-                MessageBox.Show("Ошибка: " + ex.Message);
+        private void LListView_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Control == true && e.KeyCode == Keys.Z) {
+                Interface.Open(LListView, LPanel.currentPath, LPanel, LPathBox, true);
             }
         }
+        private void RListView_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Control == true && e.KeyCode == Keys.Z) {
+                Interface.Open(RListView, RPanel.currentPath, RPanel, RPathBox, true);
+            }
+        }
+
     }
 }

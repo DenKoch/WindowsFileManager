@@ -20,10 +20,5 @@ namespace WindowsFileManager {
             }
             return disks;
         }
-
-        public override FileSystemObject[] GetChildren() {
-            return GetDisks();
-        }
-
     }
 }

@@ -9,17 +9,18 @@ namespace WindowsFileManager {
             currentPath = "";
         }
 
-        public void ShowItems(ListView lv, string path) {
+        public void ShowItems(ListView lv, string path, TextBox TextBox) {
+            TextBox.Text = path;
             if (path == "") {
                 LoadDrives(lv);
                 return;
             }
-
             ListViewItem goBack = new ListViewItem {
                 Text = "...",
                 ImageIndex = 5
             };
             lv.Items.Add(goBack);
+
             string[] dirs = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
             foreach (string dir in dirs) {
@@ -34,8 +35,8 @@ namespace WindowsFileManager {
 
         public void LoadDrives(ListView lv) {
             MyComputer myComp = new MyComputer("");
-            FileSystemObject[] disks = myComp.GetChildren();
-            foreach (FileSystemObject d in disks) {
+            Disk[] disks = myComp.GetDisks();
+            foreach (Disk d in disks) {
                 try {
                     ListViewItem lvi = new ListViewItem(d.GetPath(), 0);
                     lv.Items.Add(lvi);
@@ -44,10 +45,10 @@ namespace WindowsFileManager {
             currentPath = "";
         }
 
-        public void GoToFolder(ListView lv, string newPath) {
+        public void GoToFolder(ListView lv, string newPath, TextBox TextBox) {
             lv.Items.Clear();
             currentPath = newPath;
-            ShowItems(lv, currentPath);
+            ShowItems(lv, currentPath, TextBox);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace WindowsFileManager {
         public Container(string fullPath) : base(fullPath) {
         }
 
-
         public override string GetName() {
             throw new NotImplementedException();
         }
@@ -27,6 +26,7 @@ namespace WindowsFileManager {
         virtual public File[] getFiles() {
 
         }*/
+
         virtual public FileSystemObject[] GetChildren() {
             FileSystemObject[] children = new FileSystemObject[1];
             return children;
