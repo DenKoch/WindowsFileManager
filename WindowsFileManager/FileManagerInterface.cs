@@ -9,26 +9,16 @@ using System.Windows.Forms;
 namespace WindowsFileManager {
     public class FileManagerInterface {
 
-        public void Open(ListView lv, string currentPath, Panel panel, TextBox TextBox, bool goBack) {
+        public void GoBack(ListView lv, Panel panel, TextBox textBox) {
             string path = null;
-            if (lv.SelectedItems.Count == 1) {
-                if (lv.SelectedItems[0].Text == "...") {
-                    goBack = true;
-                } else {
-                    path = currentPath + lv.SelectedItems[0].Text;
-                    if (currentPath != "") {
-                        path += @"\";
-                    }
-                }
-            }
-            if (goBack && currentPath != "") {
-                path = currentPath.Remove(currentPath.LastIndexOf(@"\"), 1);
+            if (panel.currentPath != "") {
+                path = panel.currentPath.Remove(panel.currentPath.LastIndexOf(@"\"), 1);
                 path = path.Remove(path.LastIndexOf(@"\") + 1, path.Length - path.LastIndexOf(@"\") - 1);
             }
-            //MessageBox.Show(path);
+
             try {
                 if (Directory.Exists(path) || path == "") {
-                    panel.GoToFolder(lv, path, TextBox);
+                    panel.GoToFolder(lv, path, textBox);
                 } else {
                     MessageBox.Show("Папка не существует");
                 }
@@ -38,6 +28,27 @@ namespace WindowsFileManager {
         }
 
 
+        public void OpenFolder(ListView lv, Panel panel, TextBox textBox) {
+            string path = null;
+            path = panel.currentPath + lv.SelectedItems[0].Text;
+            if (panel.currentPath != "") {
+                path += @"\";
+            }
+
+            try {
+                if (Directory.Exists(path) || path == "") {
+                    panel.GoToFolder(lv, path, textBox);
+                } else {
+                    MessageBox.Show("Папка не существует");
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+        }
+
+        public void OpenFile() {
+            //MessageBox.Show("efskgh");
+        }
 
 
     }

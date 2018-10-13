@@ -35,9 +35,9 @@
             this.RPathBox = new System.Windows.Forms.TextBox();
             this.LListView = new System.Windows.Forms.ListView();
             this.LName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RListView = new System.Windows.Forms.ListView();
             this.LType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RListView = new System.Windows.Forms.ListView();
             this.RName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -151,6 +151,15 @@
             this.LName.Text = "Имя";
             this.LName.Width = 320;
             // 
+            // LType
+            // 
+            this.LType.Text = "Тип";
+            // 
+            // LSize
+            // 
+            this.LSize.Text = "Размер";
+            this.LSize.Width = 80;
+            // 
             // RListView
             // 
             this.RListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -170,15 +179,6 @@
             this.RListView.View = System.Windows.Forms.View.Details;
             this.RListView.DoubleClick += new System.EventHandler(this.RListView_DoubleClick);
             this.RListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RListView_KeyDown);
-            // 
-            // LType
-            // 
-            this.LType.Text = "Тип";
-            // 
-            // LSize
-            // 
-            this.LSize.Text = "Размер";
-            this.LSize.Width = 80;
             // 
             // RName
             // 
