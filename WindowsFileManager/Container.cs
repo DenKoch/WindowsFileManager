@@ -19,14 +19,6 @@ namespace WindowsFileManager {
             throw new NotImplementedException();
         }
 
-
-        /*virtual public Folder[] getFolders() {
-
-        }
-        virtual public File[] getFiles() {
-
-        }*/
-
         virtual public FileSystemObject[] GetChildren() {
             FileSystemObject[] children = new FileSystemObject[1];
             return children;
