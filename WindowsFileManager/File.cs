@@ -17,6 +17,7 @@ namespace WindowsFileManager {
             _name = Path.GetFileNameWithoutExtension(fullPath);
             _size = fi.Length;
             _type = fi.Extension;
+            //_type = fi.Extension.Remove(0, 1);
         }
 
         public override string GetName() {
@@ -29,11 +30,13 @@ namespace WindowsFileManager {
             return _type;
         }
         public void Show(ListView lv) {
-            ListViewItem dirItem = new ListViewItem {
-                Text = _name,
-                ImageIndex = 2
-            };
-            lv.Items.Add(dirItem);
+            ListViewItem fileItem = new ListViewItem(new[] { this.GetName(), this.GetType(), this.GetSize() });
+            fileItem.ImageIndex = 2;
+            lv.Items.Add(fileItem);
+        }
+
+        public void Delete(string path) {
+            System.IO.File.Delete(path);
         }
     }
 }

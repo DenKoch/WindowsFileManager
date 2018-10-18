@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace WindowsFileManager {
     public partial class FileManagerForm : Form {
+
         Panel LPanel = new Panel();
         Panel RPanel = new Panel();
         FileManagerInterface Interface = new FileManagerInterface();
@@ -13,8 +14,8 @@ namespace WindowsFileManager {
         }
 
         private void Form_Load(object sender, EventArgs e) {
-            LPanel.ShowItems(LListView, "", LPathBox);
-            RPanel.ShowItems(RListView, "", RPathBox);
+            LPanel.GoToFolder(LListView, "", LPathBox);
+            RPanel.GoToFolder(RListView, "", RPathBox);
         }
 
         private void LListView_DoubleClick(object sender, EventArgs e) {
@@ -55,15 +56,53 @@ namespace WindowsFileManager {
             }
         }
 
+
         private void LListView_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                Interface.CreateFolderSubmit(LListView, LPanel, LPathBox);
+            }
+            if (e.KeyCode == Keys.Delete) {
+                Interface.Delete(LListView, LPanel, LPathBox);
+            }
             if (e.Control == true && e.KeyCode == Keys.Z) {
                 Interface.GoBack(LListView, LPanel, LPathBox);
             }
         }
+
         private void RListView_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                Interface.CreateFolderSubmit(LListView, LPanel, LPathBox);
+            }
+            if (e.KeyCode == Keys.Delete) {
+                Interface.Delete(RListView, RPanel, RPathBox);
+            }
             if (e.Control == true && e.KeyCode == Keys.Z) {
                 Interface.GoBack(RListView, RPanel, RPathBox);
             }
+        }
+
+        private void DeleteL_Click(object sender, EventArgs e) {
+            Interface.Delete(LListView, LPanel, LPathBox);
+        }
+
+        private void DeleteR_Click(object sender, EventArgs e) {
+            Interface.Delete(RListView, RPanel, RPathBox);
+        }
+
+        private void CopyL_Click(object sender, EventArgs e) {
+            //Interface.Copy(LListView, LPanel);
+        }
+
+        private void CopyR_Click(object sender, EventArgs e) {
+            //Interface.Copy(RListView, RPanel);
+        }
+
+        private void LNewFolder_Click(object sender, EventArgs e) {
+            Interface.CreateFolderName(LListView, LPanel, LPathBox);
+        }
+
+        private void RNewFolder_Click(object sender, EventArgs e) {
+            Interface.CreateFolderName(RListView, RPanel, RPathBox);
         }
 
     }

@@ -50,6 +50,38 @@ namespace WindowsFileManager {
             //MessageBox.Show("efskgh");
         }
 
+        public void Delete(ListView lv, Panel panel, TextBox textBox) {
+            int n = lv.SelectedItems.Count;
+            if (n == 0) {
+                return;
+            }
+            if (textBox.Text == "") {
+                MessageBox.Show("Вы не можете удалить локальный диск!", "Удалить");
+                return;
+            }
 
+            string[] selection = new string[n];
+            for (int i = 0; i < n; i++) {
+                selection[i] = textBox.Text + lv.SelectedItems[i].Text + lv.SelectedItems[i].SubItems[1].Text;
+            }
+
+            if (MessageBox.Show("Вы действительно хотите это удалить?", "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                panel.Delete(lv, selection);
+                panel.RefreshLV(lv, panel.currentPath);
+            }
+        }
+
+        public void CreateFolderName(ListView lv, Panel panel, TextBox textBox) {
+            if (textBox.Text == "") {
+                return;
+            }
+            panel.CreateFolderName(lv, panel, textBox);
+        }
+
+        public void CreateFolderSubmit(ListView lv, Panel panel, TextBox textBox) {
+            panel.CreateFolderSubmit(lv, panel, textBox);
+            panel.RefreshLV(lv, panel.currentPath);
+        }
     }
 }
+
