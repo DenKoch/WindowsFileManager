@@ -90,11 +90,11 @@ namespace WindowsFileManager {
         }
 
         private void CopyL_Click(object sender, EventArgs e) {
-            //Interface.Copy(LListView, LPanel);
+            Interface.Copy(LListView, LPanel);
         }
 
         private void CopyR_Click(object sender, EventArgs e) {
-            //Interface.Copy(RListView, RPanel);
+            Interface.Copy(RListView, RPanel);
         }
 
         private void LNewFolder_Click(object sender, EventArgs e) {
@@ -105,5 +105,13 @@ namespace WindowsFileManager {
             Interface.CreateFolderName(RListView, RPanel, RPathBox);
         }
 
+        private void LPaste_Click(object sender, EventArgs e) {
+            Interface.Paste(LListView, LPanel);
+        }
+
+        private void RPaste_Click(object sender, EventArgs e) {
+            Interface.Paste(RListView, RPanel);
+
+        }
     }
 }

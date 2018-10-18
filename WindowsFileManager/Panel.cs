@@ -51,8 +51,6 @@ namespace WindowsFileManager {
             RefreshLV(lv, currentPath);
         }
 
-
-
         public void Delete(ListView lv, string[] selection) {
             int n = selection.Length;
             for (int i = 0; i < n; i++) {
@@ -61,7 +59,6 @@ namespace WindowsFileManager {
                         Folder folder = new Folder(selection[i]);
                         folder.Delete(selection[i]);
                     } else {
-                        MessageBox.Show(selection[i]);
                         File file = new File(selection[i]);
                         file.Delete(selection[i]);
                     }
@@ -79,6 +76,9 @@ namespace WindowsFileManager {
         }
 
         public void CreateFolderSubmit(ListView lv, Panel panel, TextBox textBox) {
+            if (lv.Items[lv.Items.Count - 1].ImageIndex != 1) {
+                return;
+            }
             try {
                 if (lv.Items[lv.Items.Count - 1].Text != " ") {
                     string path = textBox.Text + @"\" + lv.Items[lv.Items.Count - 1].Text;

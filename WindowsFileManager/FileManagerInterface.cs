@@ -82,6 +82,37 @@ namespace WindowsFileManager {
             panel.CreateFolderSubmit(lv, panel, textBox);
             panel.RefreshLV(lv, panel.currentPath);
         }
+
+        public void Copy(ListView lv, Panel panel) {
+            Clipboard.Clear();
+            string sourcePath = panel.currentPath;
+            Clipboard.SetText(panel.currentPath + lv.SelectedItems[0].Text +
+                lv.SelectedItems[0].SubItems[1].Text);
+
+            /*
+            int n = lv.SelectedItems.Count;
+            string[] selection = new string[n];
+            string totalPath = null;
+            for(int i = 0; i < n; i++) {
+                selection[i] = lv.SelectedItems[i].Text + lv.SelectedItems[i].SubItems[1].Text;
+                totalPath += selection[i] + "*";
+            }
+            Clipboard.SetText(totalPath);
+            */
+
+        }
+
+        public void Paste(ListView lv, Panel panel) {
+            string source = Clipboard.GetText();
+            string target = panel.currentPath;
+
+            FileInfo fi = new FileInfo(source);
+            target += Path.GetFileName(source);
+
+            System.IO.File.Copy(source, target, true);
+            panel.RefreshLV(lv, panel.currentPath);
+        }
     }
 }
+
 

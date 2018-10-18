@@ -37,24 +37,24 @@
             this.LName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RListView = new System.Windows.Forms.ListView();
-            this.RName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.RContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.LNewFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LCut = new System.Windows.Forms.ToolStripMenuItem();
             this.LCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.LPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.LDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.RListView = new System.Windows.Forms.ListView();
+            this.RName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RNewFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.RCut = new System.Windows.Forms.ToolStripMenuItem();
             this.RCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.RPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.RDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.LNewFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.RNewFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.LContextMenuStrip.SuspendLayout();
@@ -183,6 +183,57 @@
             this.LSize.Text = "Размер";
             this.LSize.Width = 80;
             // 
+            // LContextMenuStrip
+            // 
+            this.LContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LNewFolder,
+            this.toolStripSeparator1,
+            this.LCut,
+            this.LCopy,
+            this.LPaste,
+            this.LDelete});
+            this.LContextMenuStrip.Name = "LContextMenuStrip";
+            this.LContextMenuStrip.Size = new System.Drawing.Size(144, 120);
+            // 
+            // LNewFolder
+            // 
+            this.LNewFolder.Name = "LNewFolder";
+            this.LNewFolder.Size = new System.Drawing.Size(180, 22);
+            this.LNewFolder.Text = "Новая папка";
+            this.LNewFolder.Click += new System.EventHandler(this.LNewFolder_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // LCut
+            // 
+            this.LCut.Name = "LCut";
+            this.LCut.Size = new System.Drawing.Size(180, 22);
+            this.LCut.Text = "Вырезать";
+            // 
+            // LCopy
+            // 
+            this.LCopy.Name = "LCopy";
+            this.LCopy.Size = new System.Drawing.Size(143, 22);
+            this.LCopy.Text = "Копировать";
+            this.LCopy.Click += new System.EventHandler(this.CopyL_Click);
+            // 
+            // LPaste
+            // 
+            this.LPaste.Name = "LPaste";
+            this.LPaste.Size = new System.Drawing.Size(180, 22);
+            this.LPaste.Text = "Вставить";
+            this.LPaste.Click += new System.EventHandler(this.LPaste_Click);
+            // 
+            // LDelete
+            // 
+            this.LDelete.Name = "LDelete";
+            this.LDelete.Size = new System.Drawing.Size(180, 22);
+            this.LDelete.Text = "Удалить";
+            this.LDelete.Click += new System.EventHandler(this.DeleteL_Click);
+            // 
             // RListView
             // 
             this.RListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -219,18 +270,6 @@
             this.RSize.Text = "Размер";
             this.RSize.Width = 80;
             // 
-            // LContextMenuStrip
-            // 
-            this.LContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LNewFolder,
-            this.toolStripSeparator1,
-            this.LCut,
-            this.LCopy,
-            this.LPaste,
-            this.LDelete});
-            this.LContextMenuStrip.Name = "LContextMenuStrip";
-            this.LContextMenuStrip.Size = new System.Drawing.Size(144, 120);
-            // 
             // RContextMenuStrip
             // 
             this.RContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -243,42 +282,28 @@
             this.RContextMenuStrip.Name = "RContextMenuStrip";
             this.RContextMenuStrip.Size = new System.Drawing.Size(144, 120);
             // 
-            // LCut
+            // RNewFolder
             // 
-            this.LCut.Name = "LCut";
-            this.LCut.Size = new System.Drawing.Size(143, 22);
-            this.LCut.Text = "Вырезать";
+            this.RNewFolder.Name = "RNewFolder";
+            this.RNewFolder.Size = new System.Drawing.Size(143, 22);
+            this.RNewFolder.Text = "Новая папка";
+            this.RNewFolder.Click += new System.EventHandler(this.RNewFolder_Click);
             // 
-            // LCopy
+            // toolStripSeparator2
             // 
-            this.LCopy.Name = "LCopy";
-            this.LCopy.Size = new System.Drawing.Size(143, 22);
-            this.LCopy.Text = "Копировать";
-            this.LCopy.Click += new System.EventHandler(this.CopyL_Click);
-            // 
-            // LPaste
-            // 
-            this.LPaste.Name = "LPaste";
-            this.LPaste.Size = new System.Drawing.Size(143, 22);
-            this.LPaste.Text = "Вставить";
-            // 
-            // LDelete
-            // 
-            this.LDelete.Name = "LDelete";
-            this.LDelete.Size = new System.Drawing.Size(143, 22);
-            this.LDelete.Text = "Удалить";
-            this.LDelete.Click += new System.EventHandler(this.DeleteL_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(140, 6);
             // 
             // RCut
             // 
             this.RCut.Name = "RCut";
-            this.RCut.Size = new System.Drawing.Size(180, 22);
+            this.RCut.Size = new System.Drawing.Size(143, 22);
             this.RCut.Text = "Вырезать";
             // 
             // RCopy
             // 
             this.RCopy.Name = "RCopy";
-            this.RCopy.Size = new System.Drawing.Size(180, 22);
+            this.RCopy.Size = new System.Drawing.Size(143, 22);
             this.RCopy.Text = "Копировать";
             this.RCopy.Click += new System.EventHandler(this.CopyR_Click);
             // 
@@ -287,37 +312,14 @@
             this.RPaste.Name = "RPaste";
             this.RPaste.Size = new System.Drawing.Size(180, 22);
             this.RPaste.Text = "Вставить";
+            this.RPaste.Click += new System.EventHandler(this.RPaste_Click);
             // 
             // RDelete
             // 
             this.RDelete.Name = "RDelete";
-            this.RDelete.Size = new System.Drawing.Size(180, 22);
+            this.RDelete.Size = new System.Drawing.Size(143, 22);
             this.RDelete.Text = "Удалить";
             this.RDelete.Click += new System.EventHandler(this.DeleteR_Click);
-            // 
-            // LNewFolder
-            // 
-            this.LNewFolder.Name = "LNewFolder";
-            this.LNewFolder.Size = new System.Drawing.Size(180, 22);
-            this.LNewFolder.Text = "Новая папка";
-            this.LNewFolder.Click += new System.EventHandler(this.LNewFolder_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
-            // 
-            // RNewFolder
-            // 
-            this.RNewFolder.Name = "RNewFolder";
-            this.RNewFolder.Size = new System.Drawing.Size(180, 22);
-            this.RNewFolder.Text = "Новая папка";
-            this.RNewFolder.Click += new System.EventHandler(this.RNewFolder_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // FileManagerForm
             // 
