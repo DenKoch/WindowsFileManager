@@ -47,7 +47,7 @@ namespace WindowsFileManager {
         }
 
         public void OpenFile() {
-            //MessageBox.Show("efskgh");
+            MessageBox.Show("efskgh");
         }
 
         public void Delete(ListView lv, Panel panel, TextBox textBox) {
@@ -67,7 +67,6 @@ namespace WindowsFileManager {
 
             if (MessageBox.Show("Вы действительно хотите это удалить?", "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 panel.Delete(lv, selection);
-                panel.RefreshLV(lv, panel.currentPath);
             }
         }
 
@@ -80,39 +79,24 @@ namespace WindowsFileManager {
 
         public void CreateFolderSubmit(ListView lv, Panel panel, TextBox textBox) {
             panel.CreateFolderSubmit(lv, panel, textBox);
-            panel.RefreshLV(lv, panel.currentPath);
         }
 
         public void Copy(ListView lv, Panel panel) {
-            Clipboard.Clear();
-            string sourcePath = panel.currentPath;
-            Clipboard.SetText(panel.currentPath + lv.SelectedItems[0].Text +
-                lv.SelectedItems[0].SubItems[1].Text);
-
-            /*
-            int n = lv.SelectedItems.Count;
-            string[] selection = new string[n];
-            string totalPath = null;
-            for(int i = 0; i < n; i++) {
-                selection[i] = lv.SelectedItems[i].Text + lv.SelectedItems[i].SubItems[1].Text;
-                totalPath += selection[i] + "*";
-            }
-            Clipboard.SetText(totalPath);
-            */
-
+            panel.Copy(lv, panel);
         }
 
         public void Paste(ListView lv, Panel panel) {
-            string source = Clipboard.GetText();
-            string target = panel.currentPath;
-
-            FileInfo fi = new FileInfo(source);
-            target += Path.GetFileName(source);
-
-            System.IO.File.Copy(source, target, true);
-            panel.RefreshLV(lv, panel.currentPath);
+            panel.Paste(lv, panel);
         }
+
+        public void CreateTextFile(ListView lv, Panel panel, TextBox textBox) {
+            if (textBox.Text == "")
+                return;
+            panel.CreateTXT(lv, panel, textBox);
+        }
+        public void CreateTXTSubmit(ListView lv, Panel panel, TextBox textBox) {
+            panel.CreateTXTSubmit(lv, panel, textBox);
+        }
+
     }
 }
-
-

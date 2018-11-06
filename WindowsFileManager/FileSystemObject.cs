@@ -11,7 +11,7 @@ namespace WindowsFileManager {
         public FileSystemObject(string fullPath) {
             _fullPath = fullPath;
         }
-        public string GetPath() {
+        public virtual string GetPath() {
             return _fullPath;
         }
 
