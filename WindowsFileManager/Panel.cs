@@ -15,11 +15,11 @@ namespace WindowsFileManager {
             _isNewFileCreated = false;
         }
 
-        public bool isNewFolderCreated() {
+        public bool IsNewFolderCreated() {
             return _isNewFolderCreated;
         }
 
-        public bool isNewFileCreated() {
+        public bool IsNewFileCreated() {
             return _isNewFileCreated;
         }
 
@@ -75,8 +75,7 @@ namespace WindowsFileManager {
             for (int i = 0; i < n; i++) {
                 try {
                     if (Directory.Exists(selection[i])) {
-                        Folder folder = new Folder(selection[i]);
-                        folder.Delete(selection[i]);
+                        Folder.Delete(selection[i]);
                     } else {
                         File.Delete(selection[i]);
                     }
@@ -88,8 +87,9 @@ namespace WindowsFileManager {
 
         public void CreateFolderName(ListView lv, Panel panel, TextBox textBox) {
             _isNewFolderCreated = true;
-            ListViewItem newf = new ListViewItem();
-            newf.ImageIndex = 1;
+            ListViewItem newf = new ListViewItem {
+                ImageIndex = 1
+            };
             lv.Items.Add(newf);
             lv.Items[lv.Items.Count - 1].BeginEdit();
 
@@ -102,6 +102,11 @@ namespace WindowsFileManager {
             try {
                 if (lv.Items[lv.Items.Count - 1].Text != " ") {
                     string path = textBox.Text + @"\" + lv.Items[lv.Items.Count - 1].Text;
+                    if (Directory.Exists(path)) {
+                        MessageBox.Show("Папка с таким именем уже существует!");
+                        _isNewFolderCreated = false;
+                        return;
+                    }
                     Directory.CreateDirectory(path);
                     _isNewFolderCreated = false;
                 }
@@ -113,8 +118,9 @@ namespace WindowsFileManager {
 
         public void CreateTXT(ListView lv, Panel panel, TextBox textBox) {
             _isNewFileCreated = true;
-            ListViewItem newf = new ListViewItem();
-            newf.ImageIndex = 3;
+            ListViewItem newf = new ListViewItem {
+                ImageIndex = 3
+            };
             lv.Items.Add(newf);
             lv.Items[lv.Items.Count - 1].BeginEdit();
         }
@@ -186,9 +192,7 @@ namespace WindowsFileManager {
                         }
                     } else {
                         //если это папка
-                        Folder folder = new Folder(sourcePath + sourceFilePath);
-
-                        folder.Copy(targetPath + sourceFilePath);
+                        Folder.Copy(sourcePath + sourceFilePath, targetPath + sourceFilePath);
                     }
                 }
             }

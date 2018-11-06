@@ -69,9 +69,9 @@ namespace WindowsFileManager {
         //нажатие клавиши
         private void LListView_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
-                if (LPanel.isNewFolderCreated()) {
+                if (LPanel.IsNewFolderCreated()) {
                     Interface.CreateFolderSubmit(LListView, LPanel, LPathBox);
-                } else if (LPanel.isNewFileCreated()) {
+                } else if (LPanel.IsNewFileCreated()) {
                     Interface.CreateTXTSubmit(LListView, LPanel, LPathBox);
                 }
                 Refresh();
@@ -85,9 +85,9 @@ namespace WindowsFileManager {
         }
         private void RListView_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
-                if (RPanel.isNewFolderCreated()) {
+                if (RPanel.IsNewFolderCreated()) {
                     Interface.CreateFolderSubmit(RListView, RPanel, RPathBox);
-                } else if (RPanel.isNewFileCreated()) {
+                } else if (RPanel.IsNewFileCreated()) {
                     Interface.CreateTXTSubmit(RListView, RPanel, RPathBox);
                 }
                 Refresh();
@@ -147,7 +147,7 @@ namespace WindowsFileManager {
         }
 
         //справка
-        private void справкаToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void СправкаToolStripMenuItem_Click(object sender, EventArgs e) {
             MessageBox.Show("Made by Denis Kochetkov, K-26", "Справка");
         }
     }
