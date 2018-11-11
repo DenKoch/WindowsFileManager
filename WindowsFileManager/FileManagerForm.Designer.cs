@@ -26,9 +26,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileManagerForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TextEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.LPathBox = new System.Windows.Forms.TextBox();
@@ -65,35 +66,44 @@
             // 
             this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.правкаToolStripMenuItem,
-            this.справкаToolStripMenuItem});
+            this.FileToolStripMenuItem,
+            this.EditToolStripMenuItem,
+            this.AboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(984, 27);
+            this.menuStrip.Size = new System.Drawing.Size(1184, 27);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
-            // файлToolStripMenuItem
+            // FileToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-            this.файлToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TextEditorToolStripMenuItem});
+            this.FileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+            this.FileToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
+            this.FileToolStripMenuItem.Text = "File";
             // 
-            // правкаToolStripMenuItem
+            // TextEditorToolStripMenuItem
             // 
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(67, 23);
-            this.правкаToolStripMenuItem.Text = "Правка";
+            this.TextEditorToolStripMenuItem.Name = "TextEditorToolStripMenuItem";
+            this.TextEditorToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.TextEditorToolStripMenuItem.Text = "Text Editor";
+            this.TextEditorToolStripMenuItem.Click += new System.EventHandler(this.TextEditorToolStripMenuItem_Click);
             // 
-            // справкаToolStripMenuItem
+            // EditToolStripMenuItem
             // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(74, 23);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.СправкаToolStripMenuItem_Click);
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(44, 23);
+            this.EditToolStripMenuItem.Text = "Edit";
+            // 
+            // AboutToolStripMenuItem
+            // 
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
+            this.AboutToolStripMenuItem.Text = "About";
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // imageList
             // 
@@ -125,7 +135,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 434);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 634);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // LPathBox
@@ -135,7 +145,7 @@
             this.LPathBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LPathBox.Location = new System.Drawing.Point(3, 3);
             this.LPathBox.Name = "LPathBox";
-            this.LPathBox.Size = new System.Drawing.Size(486, 23);
+            this.LPathBox.Size = new System.Drawing.Size(586, 23);
             this.LPathBox.TabIndex = 0;
             // 
             // RPathBox
@@ -143,9 +153,9 @@
             this.RPathBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RPathBox.Enabled = false;
             this.RPathBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RPathBox.Location = new System.Drawing.Point(495, 3);
+            this.RPathBox.Location = new System.Drawing.Point(595, 3);
             this.RPathBox.Name = "RPathBox";
-            this.RPathBox.Size = new System.Drawing.Size(486, 23);
+            this.RPathBox.Size = new System.Drawing.Size(586, 23);
             this.RPathBox.TabIndex = 1;
             // 
             // LListView
@@ -156,12 +166,12 @@
             this.LSize});
             this.LListView.ContextMenuStrip = this.LContextMenuStrip;
             this.LListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LListView.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LListView.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LListView.LabelEdit = true;
             this.LListView.LargeImageList = this.imageList;
             this.LListView.Location = new System.Drawing.Point(3, 27);
             this.LListView.Name = "LListView";
-            this.LListView.Size = new System.Drawing.Size(486, 404);
+            this.LListView.Size = new System.Drawing.Size(586, 604);
             this.LListView.SmallImageList = this.imageList;
             this.LListView.StateImageList = this.imageList;
             this.LListView.TabIndex = 2;
@@ -172,16 +182,16 @@
             // 
             // LName
             // 
-            this.LName.Text = "Имя";
+            this.LName.Text = "Name";
             this.LName.Width = 320;
             // 
             // LType
             // 
-            this.LType.Text = "Тип";
+            this.LType.Text = "Type";
             // 
             // LSize
             // 
-            this.LSize.Text = "Размер";
+            this.LSize.Text = "Size";
             this.LSize.Width = 80;
             // 
             // LContextMenuStrip
@@ -244,12 +254,12 @@
             this.RSize});
             this.RListView.ContextMenuStrip = this.RContextMenuStrip;
             this.RListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RListView.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RListView.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RListView.LabelEdit = true;
             this.RListView.LargeImageList = this.imageList;
-            this.RListView.Location = new System.Drawing.Point(495, 27);
+            this.RListView.Location = new System.Drawing.Point(595, 27);
             this.RListView.Name = "RListView";
-            this.RListView.Size = new System.Drawing.Size(486, 404);
+            this.RListView.Size = new System.Drawing.Size(586, 604);
             this.RListView.SmallImageList = this.imageList;
             this.RListView.StateImageList = this.imageList;
             this.RListView.TabIndex = 3;
@@ -260,16 +270,16 @@
             // 
             // RName
             // 
-            this.RName.Text = "Имя";
+            this.RName.Text = "Name";
             this.RName.Width = 320;
             // 
             // RType
             // 
-            this.RType.Text = "Тип";
+            this.RType.Text = "Type";
             // 
             // RSize
             // 
-            this.RSize.Text = "Размер";
+            this.RSize.Text = "Size";
             this.RSize.Width = 80;
             // 
             // RContextMenuStrip
@@ -329,7 +339,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -351,9 +361,9 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox LPathBox;
@@ -380,6 +390,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem LNewTXT;
         private System.Windows.Forms.ToolStripMenuItem RNewTXT;
+        private System.Windows.Forms.ToolStripMenuItem TextEditorToolStripMenuItem;
     }
 }
 

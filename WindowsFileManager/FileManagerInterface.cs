@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFileManager {
     public class FileManagerInterface {
+        private bool isTxtEditorOpened;
 
         public void GoBack(ListView lv, Panel panel, TextBox textBox) {
             string path = null;
@@ -23,7 +20,7 @@ namespace WindowsFileManager {
                     MessageBox.Show("Папка не существует");
                 }
             } catch (Exception ex) {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -42,12 +39,21 @@ namespace WindowsFileManager {
                     MessageBox.Show("Папка не существует");
                 }
             } catch (Exception ex) {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        public void OpenFile() {
-            MessageBox.Show("efskgh");
+        public void OpenFile(ListView lv, TextBox textBox) {
+            string ext = lv.SelectedItems[0].SubItems[1].Text;
+            if (ext == ".txt" || ext == ".html" || ext == ".htm") {
+                string path = textBox.Text + lv.SelectedItems[0].Text;
+                //MessageBox.Show(path + ext);
+                TextEditorForm editor = new TextEditorForm(path + ext);
+                editor.Show();
+                isTxtEditorOpened = true;
+            } else {
+                MessageBox.Show("Не могу открыть этот файл!");
+            }
         }
 
         public void Delete(ListView lv, Panel panel, TextBox textBox) {
@@ -68,6 +74,7 @@ namespace WindowsFileManager {
             if (MessageBox.Show("Вы действительно хотите это удалить?", "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 panel.Delete(lv, selection);
             }
+
         }
 
         public void CreateFolderName(ListView lv, Panel panel, TextBox textBox) {
@@ -98,5 +105,10 @@ namespace WindowsFileManager {
             panel.CreateTXTSubmit(lv, panel, textBox);
         }
 
+        public void OpenTxtEditor() {
+            TextEditorForm editor = new TextEditorForm("");
+            editor.Show();
+            isTxtEditorOpened = true;
+        }
     }
 }

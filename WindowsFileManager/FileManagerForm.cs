@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace WindowsFileManager {
     public partial class FileManagerForm : Form {
 
-        Panel LPanel = new Panel();
-        Panel RPanel = new Panel();
-        FileManagerInterface Interface = new FileManagerInterface();
+        private Panel LPanel = new Panel();
+        private Panel RPanel = new Panel();
+        private FileManagerInterface Interface = new FileManagerInterface();
 
         public FileManagerForm() {
             InitializeComponent();
@@ -19,11 +19,10 @@ namespace WindowsFileManager {
         }
 
         //обновление обоих панелей
-        private void Refresh() {
+        public new void Refresh() {
             LPanel.RefreshLV(LListView, LPanel.currentPath);
             RPanel.RefreshLV(RListView, RPanel.currentPath);
         }
-
 
         //дабл клик
         private void LListView_DoubleClick(object sender, EventArgs e) {
@@ -41,7 +40,7 @@ namespace WindowsFileManager {
                 }
                 Interface.OpenFolder(LListView, LPanel, LPathBox);
             } else { //открытие файла
-                Interface.OpenFile();
+                Interface.OpenFile(LListView, LPathBox);
             }
         }
         private void RListView_DoubleClick(object sender, EventArgs e) {
@@ -59,12 +58,9 @@ namespace WindowsFileManager {
                 }
                 Interface.OpenFolder(RListView, RPanel, RPathBox);
             } else { //открытие файла
-                Interface.OpenFile();
+                Interface.OpenFile(RListView, RPathBox);
             }
         }
-
-
-
 
         //нажатие клавиши
         private void LListView_KeyDown(object sender, KeyEventArgs e) {
@@ -78,6 +74,7 @@ namespace WindowsFileManager {
             }
             if (e.KeyCode == Keys.Delete) {
                 Interface.Delete(LListView, LPanel, LPathBox);
+                Refresh();
             }
             if (e.Control == true && e.KeyCode == Keys.Z) {
                 Interface.GoBack(LListView, LPanel, LPathBox);
@@ -94,6 +91,7 @@ namespace WindowsFileManager {
             }
             if (e.KeyCode == Keys.Delete) {
                 Interface.Delete(RListView, RPanel, RPathBox);
+                Refresh();
             }
             if (e.Control == true && e.KeyCode == Keys.Z) {
                 Interface.GoBack(RListView, RPanel, RPathBox);
@@ -147,8 +145,12 @@ namespace WindowsFileManager {
         }
 
         //справка
-        private void СправкаToolStripMenuItem_Click(object sender, EventArgs e) {
-            MessageBox.Show("Made by Denis Kochetkov, K-26", "Справка");
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show("Made by Denis Kochetkov, K-26", "About");
+        }
+
+        private void TextEditorToolStripMenuItem_Click(object sender, EventArgs e) {
+            Interface.OpenTxtEditor();
         }
     }
 }

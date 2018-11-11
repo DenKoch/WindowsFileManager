@@ -55,18 +55,6 @@ namespace WindowsFileManager {
         }
 
         static public void Create(string path) {
-
-            /*
-            FileInfo fi = new FileInfo(path);
-            string ext = fi.Extension;
-            string pathWithoutExt = Path.GetFileNameWithoutExtension(path);
-            if (copy) {
-                pathWithoutExt += " - копия";
-            }
-            string newPath = pathWithoutExt + ext;
-            */
-
-
             FileStream fs = System.IO.File.Create(path);
             fs.Close();
             return;

@@ -80,7 +80,7 @@ namespace WindowsFileManager {
                         File.Delete(selection[i]);
                     }
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace WindowsFileManager {
                 if (lv.Items[lv.Items.Count - 1].Text != " ") {
                     string path = textBox.Text + @"\" + lv.Items[lv.Items.Count - 1].Text;
                     if (Directory.Exists(path)) {
-                        MessageBox.Show("Папка с таким именем уже существует!");
+                        MessageBox.Show("Folder with the same name already exists!");
                         _isNewFolderCreated = false;
                         return;
                     }
@@ -132,9 +132,13 @@ namespace WindowsFileManager {
             try {
                 if (lv.Items[lv.Items.Count - 1].Text != " ") {
                     string path = textBox.Text + lv.Items[lv.Items.Count - 1].Text + ".txt";
+
                     if (!File.Exists(path)) {
                         File.Create(path);
-                    } else if (MessageBox.Show("Файл с таким именем уже существует. Перезаписать файл?", "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    } else if (MessageBox.Show("File with the same name already exists. Override?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                        File.Create(path);
+                    } else {
+                        path = textBox.Text + lv.Items[lv.Items.Count - 1].Text + " - копия.txt";
                         File.Create(path);
                     }
                     _isNewFileCreated = false;
