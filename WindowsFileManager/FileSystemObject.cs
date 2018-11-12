@@ -15,9 +15,6 @@ namespace WindowsFileManager {
             return _fullPath;
         }
 
-        //public abstract void copyTo();
-        //public abstract void delete();
-
         public abstract string GetName();
         public abstract new string GetType();
         public abstract string GetSize();

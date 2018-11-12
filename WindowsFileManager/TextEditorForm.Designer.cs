@@ -33,9 +33,10 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExtraFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inverseRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mergeHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentFileName = new System.Windows.Forms.ToolStripMenuItem();
-            this.mergeHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.correctMistakesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +115,8 @@
             // 
             this.ExtraFunctionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inverseRegisterToolStripMenuItem,
-            this.mergeHTMLToolStripMenuItem});
+            this.mergeHTMLToolStripMenuItem,
+            this.correctMistakesToolStripMenuItem});
             this.ExtraFunctionsToolStripMenuItem.Name = "ExtraFunctionsToolStripMenuItem";
             this.ExtraFunctionsToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.ExtraFunctionsToolStripMenuItem.Text = "Extra Functions";
@@ -125,6 +127,13 @@
             this.inverseRegisterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inverseRegisterToolStripMenuItem.Text = "Inverse Register";
             this.inverseRegisterToolStripMenuItem.Click += new System.EventHandler(this.inverseRegisterToolStripMenuItem_Click);
+            // 
+            // mergeHTMLToolStripMenuItem
+            // 
+            this.mergeHTMLToolStripMenuItem.Name = "mergeHTMLToolStripMenuItem";
+            this.mergeHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mergeHTMLToolStripMenuItem.Text = "Merge HTML";
+            this.mergeHTMLToolStripMenuItem.Click += new System.EventHandler(this.mergeHTMLToolStripMenuItem_Click);
             // 
             // AboutToolStripMenuItem
             // 
@@ -142,12 +151,12 @@
             this.currentFileName.Size = new System.Drawing.Size(125, 20);
             this.currentFileName.Text = "toolStripMenuItem1";
             // 
-            // mergeHTMLToolStripMenuItem
+            // correctMistakesToolStripMenuItem
             // 
-            this.mergeHTMLToolStripMenuItem.Name = "mergeHTMLToolStripMenuItem";
-            this.mergeHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mergeHTMLToolStripMenuItem.Text = "Merge HTML";
-            this.mergeHTMLToolStripMenuItem.Click += new System.EventHandler(this.mergeHTMLToolStripMenuItem_Click);
+            this.correctMistakesToolStripMenuItem.Name = "correctMistakesToolStripMenuItem";
+            this.correctMistakesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.correctMistakesToolStripMenuItem.Text = "Correct Mistakes";
+            this.correctMistakesToolStripMenuItem.Click += new System.EventHandler(this.correctMistakesToolStripMenuItem_Click);
             // 
             // TextEditorForm
             // 
@@ -183,5 +192,6 @@
         private System.Windows.Forms.ToolStripMenuItem currentFileName;
         private System.Windows.Forms.ToolStripMenuItem inverseRegisterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mergeHTMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem correctMistakesToolStripMenuItem;
     }
 }

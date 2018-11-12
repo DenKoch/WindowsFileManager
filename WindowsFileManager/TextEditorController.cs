@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -103,7 +104,6 @@ namespace WindowsFileManager {
                 }
             }
         }
-
 
 
         public void InverseRegister(RichTextBox richTextBox1) {
@@ -313,8 +313,129 @@ namespace WindowsFileManager {
             richTextBox1.Text = beforeStyle_input2 + style_input1 + Style_Body_input2 + body_input1 + body_input2 + afterBody_input2;
         }
 
-        public void FindHTMLByKeywords() {
+        public void CorrectMistakes(RichTextBox richTextBox1) {
+            string[] dictionary;
+            /*
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Txt Files (*.txt)|*.txt";
+            ofd.Title = "Select a dictionary";
 
+            if (ofd.ShowDialog() == DialogResult.OK) {
+                dictionary = System.IO.File.ReadAllLines(ofd.FileName);
+            }
+            */
+            dictionary = System.IO.File.ReadAllLines("F:\\Den\\Coding Projects\\WindowsFileManager\\WindowsFileManager\\Dictionary.txt");
+
+            string newText = "";
+            string word = "";
+            string newWord = "";
+            List<string> wordTypes = new List<string>();
+            List<string> wordTypes2 = new List<string>();
+            richTextBox1.Text += " ";
+
+            foreach (char ch in richTextBox1.Text) {
+                if (Char.IsLetter(ch)) {
+                    word += ch;
+                } else {
+                    //получили слово
+                    if (word.Length < 2) {
+                        word = "";
+                        continue;
+                    }
+
+                    //слово уже в словаре----------------------------------------------------------
+                    foreach (string word_dict in dictionary) {
+                        if (word_dict == word) {
+                            newText += word + " ";
+                            word = "";
+                            break;
+                        }
+                    }
+
+                    if (word == "") {
+                        continue;
+                    }
+
+                    //слова нет в словаре----------------------------------------------------------
+
+                    //переставления букв
+                    for (int i = 0; i < word.Length - 1; ++i) {
+                        newWord = word;
+                        char temp = newWord[i + 1];
+                        newWord = newWord.Insert(i + 2, newWord[i].ToString());
+                        newWord = newWord.Remove(i, 1);
+                        wordTypes.Add(newWord);
+                    }
+
+                    //убираем повторения букв
+                    newWord = word;
+                    for (int i = 0; i < newWord.Length - 1; ++i) {
+                        if (newWord[i + 1] == newWord[i])
+                            newWord = newWord.Remove(i + 1, 1);
+                    }
+                    wordTypes.Add(newWord);
+
+                    //убираем лишние буквы
+                    for (int i = 0; i < word.Length; ++i) {
+                        //newWord = word;
+                        newWord = word.Remove(i, 1);
+                        wordTypes.Add(newWord);
+                    }
+
+                    /*
+                    foreach (string s in wordTypes) {
+                        MessageBox.Show(s);
+                    }
+                    */
+                    wordTypes.Add(word.ToLower());
+
+
+
+                    bool _off = false;
+
+                    foreach (string wordType in wordTypes) {
+                        foreach (string word_dict in dictionary) {
+                            if (word_dict == wordType || CompareWords(word, word_dict) == word_dict.Length - 1) {
+                                DialogResult correct = MessageBox.Show("Заменить слово <" + word + "> на слово <" + word_dict + ">?", "Исправить ошибку?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (correct == DialogResult.Yes) {
+                                    newText += word_dict + " ";
+                                    _off = true;
+                                    break;
+                                } else {
+                                    newText += wordType + " ";
+                                }
+                            }
+                        }
+                        if (_off)
+                            break;
+                    }
+
+                    word = "";
+                    wordTypes.Clear();
+                    wordTypes2.Clear();
+                }
+
+            }
+
+
+            newText = newText.Remove(newText.Length - 1, 1);
+            richTextBox1.Text = newText;
+        }
+
+        public static int CompareWords(string word1, string word2) {
+            char[] wordChar1 = word1.ToCharArray();
+            char[] wordChar2 = word2.ToCharArray();
+            int value = 0;
+
+            if (wordChar1.Length != wordChar2.Length)
+                return 0;
+
+            for (int i = 0; i < wordChar1.Length; ++i) {
+                if (wordChar1[i] == wordChar2[i])
+                    ++value;
+            }
+
+            return value;
         }
     }
 }

@@ -76,5 +76,9 @@ namespace WindowsFileManager {
                 }
             }
         }
+
+        private void correctMistakesToolStripMenuItem_Click(object sender, EventArgs e) {
+            Controller.CorrectMistakes(richTextBox1);
+        }
     }
 }

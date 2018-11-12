@@ -18,10 +18,5 @@ namespace WindowsFileManager {
         public override string GetSize() {
             throw new NotImplementedException();
         }
-
-        virtual public FileSystemObject[] GetChildren() {
-            FileSystemObject[] children = new FileSystemObject[1];
-            return children;
-        }
     }
 }
